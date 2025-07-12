@@ -4,130 +4,29 @@
   <meta charset="UTF-8">
   <title>Us ❤️</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-    <link rel="manifest" href="manifest.json">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="LoveCounter">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="LoveCounter">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <style>
-    :root {
-      font-size: 16px; /* Base font size */
-    }
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to right, #ff9a9e, #fad0c4);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-      padding: 1rem clamp(1rem, 5vw, 2rem);
-      box-sizing: border-box;
-    }
-    h1 {
-      font-size: 2rem; /* Responsive font size */
-      margin-bottom: 1rem;
-    }
-    #timer {
-      font-size: 1.2rem; /* Responsive font size */
-      background: rgba(255, 255, 255, 0.2);
-      padding: 1rem;
-      border-radius: 1rem;
-      backdrop-filter: blur(10px);
-      width: min(100%, 400px);
-      margin: 0 auto;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    .label {
-      font-size: 0.9rem; /* Responsive font size */
-      color: #f5f5f5;
-      margin-top: 1rem;
-      opacity: 0.8;
-    }
-
-    #timer {
-      transition: transform 0.2s ease;
-    }
-    #timer:active {
-      transform: scale(0.98);
-    }
-    
-    .num-btn {
-      background: #ffb6c1;
-      border: none;
-      color: white;
-      font-size: 1.2rem;
-      padding: 0.75rem;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    
-    .num-btn:hover {
-      background: #ff69b4;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    }
-    
-    .num-btn:active {
-      transform: scale(0.95) translateY(0);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-    
-    /* Media Queries for smaller devices */
-    @media (max-width: 600px), (max-height: 500px) {
-      h1 {
-        font-size: clamp(1.25rem, 6vw, 1.5rem); /* Fluid font size for mobile */
-      }
-      #timer {
-        font-size: 1rem; /* Smaller font size for mobile */
-      }
-      .label {
-        font-size: 0.8rem; /* Smaller font size for mobile */
-      }
-    }
+    /* Your existing CSS styles */
   </style>
 </head>
 <body>
   <div id="passcodeOverlay" style="display:flex; width:100%; height:100vh; position:fixed; top:0; left:0; background:linear-gradient(to right, #ff9a9e, #fad0c4); flex-direction:column; justify-content:center; align-items:center; z-index:10;">
-    <div style="background:rgba(255,255,255,0.2); padding:2rem; border-radius:1rem; backdrop-filter: blur(10px); max-width:300px; width:100%; text-align:center;">
-      <h2 style="color:#fff; font-family:cursive; font-size:1.8rem;">What's our love password?</h2>
-      <input id="passcodeInput" type="password" style="background:rgba(255,255,255,0.3); border:2px solid pink; color:#fff; font-size:1.8rem; padding:1rem; margin:1.5rem 0; width:100%; text-align:center; border-radius:12px;" maxlength="6" placeholder="⁕⁕⁕⁕⁕⁕">
-      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.8rem; margin:1.5rem 0;">
-        <button class="num-btn" onclick="appendNumber('1')" style="background:#ffb6c1; font-size:1.5rem;">1</button>
-        <button class="num-btn" onclick="appendNumber(2)" style="background:#ffb6c1; font-size:1.5rem;">2</button>
-        <button class="num-btn" onclick="appendNumber(3)" style="background:#ffb6c1; font-size:1.5rem;">3</button>
-        <button class="num-btn" onclick="appendNumber(4)" style="background:#ffb6c1; font-size:1.5rem;">4</button>
-        <button class="num-btn" onclick="appendNumber(5)" style="background:#ffb6c1; font-size:1.5rem;">5</button>
-        <button class="num-btn" onclick="appendNumber(6)" style="background:#ffb6c1; font-size:1.5rem;">6</button>
-        <button class="num-btn" onclick="appendNumber(7)" style="background:#ffb6c1; font-size:1.5rem;">7</button>
-        <button class="num-btn" onclick="appendNumber(8)" style="background:#ffb6c1; font-size:1.5rem;">8</button>
-        <button class="num-btn" onclick="appendNumber(9)" style="background:#ffb6c1; font-size:1.5rem;">9</button>
-        <button onclick="backspace()" style="grid-column:span 2; background:#ff69b4; color:white; border:none; padding:1rem; border-radius:12px; font-size:1.2rem; transition:all 0.2s ease; box-shadow:0 2px 5px rgba(0,0,0,0.1);" 
-        onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.15)';" 
-        onmouseout="this.style.transform=''; this.style.boxShadow='0 2px 5px rgba(0,0,0,0.1)';"
-        onmousedown="this.style.transform='scale(0.95) translateY(0)'; this.style.boxShadow='0 1px 3px rgba(0,0,0,0.1)';">⌫ Back</button>
-        <button class="num-btn" onclick="appendNumber(0)" style="background:#ffb6c1; font-size:1.5rem;">0</button>
-      </div>
-      <button onclick="checkPasscode()" style="background:#ff69b4; color:white; border:none; padding:1rem; margin-top:1.5rem; width:100%; border-radius:12px; font-size:1.2rem; font-weight:bold; transition:all 0.2s ease; box-shadow:0 3px 6px rgba(0,0,0,0.1);"
-      onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 10px rgba(0,0,0,0.15)';"
-      onmouseout="this.style.transform=''; this.style.boxShadow='0 3px 6px rgba(0,0,0,0.1)';"
-      onmousedown="this.style.transform='scale(0.95)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.1)';">Unlock Our Love</button>
-    </div>
+    <!-- Your existing HTML content -->
   </div>
 
   <div id="content" style="display:none; width:100%; flex-direction: column; align-items: center;">
     <h1 style="font-family:cursive; color:#ff69b4; text-shadow:1px 1px 3px rgba(0,0,0,0.2); margin-bottom:2rem;">💖 We've been together for 💖</h1>
-  <div id="timer">Loading...</div>
-  <div class="label">Since June 4, 2023 💑</div>
+    <div id="timer">Loading...</div>
+    <div class="label">Since June 4, 2023 💑</div>
+  </div>
 
   <script>
+    // Your existing JavaScript code
     const startDate = new Date("2023-06-04T15:25:00Z"); // 11:25 PM Philippines Time (UTC+8)
     let incorrectAttempts = 0;
     const hints = [
@@ -136,49 +35,11 @@
       "Our special beginning date",
       "The numbers represent a memorable day"
     ];
-    
-    // Auto-submit when 6 digits entered
-    document.getElementById('passcodeInput').addEventListener('input', function(e) {
-      // Prevent direct keyboard input to force using buttons
-      e.target.value = '';
-    });
 
-    function appendNumber(num) {
-      const input = document.getElementById('passcodeInput');
-      if(input.value.length < 6) {
-        input.value += num;
-      }
-    }
-
-    function backspace() {
-      const input = document.getElementById('passcodeInput');
-      input.value = input.value.slice(0, -1);
-    }
-
-    function checkPasscode() {
-      const input = document.getElementById('passcodeInput').value;
-      if(input === '642023') {
-        document.getElementById('passcodeOverlay').style.display = 'none';
-        document.getElementById('content').style.display = 'flex';
-        return true;
-      }
-      
-      incorrectAttempts++;
-      const messageEl = document.querySelector('#passcodeOverlay h2');
-      
-      if(incorrectAttempts === 1) {
-        messageEl.textContent = "Oops that's not it";
-      } else if(incorrectAttempts === 2) {
-        messageEl.textContent = hints[0];
-      } else {
-        // Random hint after 2nd try
-        messageEl.textContent = hints[Math.floor(Math.random() * hints.length)];
-      }
-      
-         // Register Service Worker (this makes it work offline and like an app)
+    // Register Service Worker (this makes it work offline and like an app)
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
+        navigator.serviceWorker.register('sw.js')
           .then(registration => {
             console.log('Service Worker registered:', registration);
           })
@@ -188,31 +49,11 @@
       });
     }
 
-    // Prevent direct keyboard input to force using buttons
-    document.getElementById('passcodeInput').addEventListener('input', function(e) {
-      e.target.value = '';
-    });
-
-    function appendNumber(num) {
-      const input = document.getElementById('passcodeInput');
-      // Add a visual feedback for button press
-      const buttonElement = event.target; // Get the clicked button element
-      buttonElement.classList.add('active');
-      setTimeout(() => {
-        buttonElement.classList.remove('active');
-      }, 150); // Remove 'active' class after 150ms for visual feedback
-
-      if(input.value.length < 6) {
-        input.value += num;
-      }
-      if(input.value.length === 6) {
-        checkPasscode();
-      }
-    }
+    // Your existing functions (appendNumber, backspace, checkPasscode, etc.)
+    // ...
 
     setInterval(updateTimer, 1000);
     updateTimer();
   </script>
-
 </body>
 </html>
